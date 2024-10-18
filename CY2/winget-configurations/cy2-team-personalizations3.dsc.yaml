@@ -1,0 +1,27 @@
+properties:
+  configurationVersion: 0.2.0
+  ########################################
+  ### RESOURCES: System Configuration
+  ########################################
+  resources:
+  ########################################
+  ### Install Tools
+  #########################################
+  ### Powershell Config  
+  ########################################
+  ### Run powershell cleanup script
+  ### -------------------------------------
+    - resource: PSDscResources/Script
+      id: runcleanup
+      directives:
+        description: Runs cleanup items
+      settings:
+        SetScript: |
+          $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+          $username = $env:USERNAME
+          Remove-LocalGroupMember -Group "Administrators" -Member $username
+          Remove-Item -Path "C:\src\devcenter-catalog\" -Recurse -Force
+          Remove-Item -Path "C:\temp\" -Recurse -Force
+        GetScript: return $false
+        TestScript: return $false
+

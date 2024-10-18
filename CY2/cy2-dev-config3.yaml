@@ -13,8 +13,6 @@ tasks:
     parameters:
       package: Python.Python.3.11
   
-  - name: install-docker
-  
   - name: winget
     parameters:
       package: GitHub.GitHubDesktop
@@ -30,21 +28,27 @@ tasks:
   - name: winget
     parameters:
       package: Microsoft.VisualStudioCode
+
+  - name: install-docker
   
   - name: powershell
     parameters:
       command: |
+        New-Item -Path "C:\temp" -ItemType Directory -Force
         Invoke-WebRequest -Uri "https://github.com/microsoft/WSL/releases/download/2.3.24/wsl.2.3.24.0.arm64.msi" -OutFile "C:\temp\wsl.2.3.24.0.arm64.msi"
   
   - name: install-msi
     parameters:
       filePath: 'C:\temp\wsl.2.3.24.0.arm64.msi'
 
-  - name: powershell
+  - name: git-clone
+    description: 'Clone this repository into C:\src'
     parameters:
-      command: |
-        $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-        $username = $env:USERNAME
-        Remove-LocalGroupMember -Group "Administrators" -Member $username
-        Remove-Item -Path "C:\temp\" -Recurse -Force
-      runAsUser: true
+      repositoryUrl: https://github.com/CY2-Joe52189/devboxcentercatalog.git
+      directory: C:\src
+
+  - name: winget
+    description: Apply a winget configuration file, downloading from a public URL to the specified path
+    parameters:
+      configurationFile: 'C:\src\devboxcentercatalog\CY2\winget-configurations\cy2-team-personalizations3.dsc.yaml'
+      runAsUser: true  
