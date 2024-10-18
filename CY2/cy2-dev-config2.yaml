@@ -1,0 +1,35 @@
+$schema: "1.0"
+name: devbox-customization
+tasks:
+  - name: winget
+    parameters:
+      package: Microsoft.PowerShell
+  - name: winget
+    parameters:
+      package: OpenJS.NodeJS
+  - name: winget
+    parameters:
+      package: Python.Python.3.11
+  - name: install-docker
+  - name: winget
+    parameters:
+      package: GitHub.GitHubDesktop
+  - name: winget
+    parameters:
+      package: 7zip.7zip
+  - name: winget
+    parameters:
+      package: Notepad++.Notepad++
+  - name: winget
+    parameters:
+      package: Microsoft.VisualStudioCode
+  - name: git-clone
+    description: 'Clone this repository into C:\src'
+    parameters:
+      repositoryUrl: https://github.com/CY2-Joe52189/devcenter-catalog.git
+      directory: C:\src
+  - name: winget
+    description: Apply a winget configuration file, downloading from a public URL to the specified path
+    parameters:
+      configurationFile: 'C:\src\devcenter-catalog\CY2\winget-configurations\cy2-team-personalizations2.dsc.yaml'
+      runAsUser: true  
