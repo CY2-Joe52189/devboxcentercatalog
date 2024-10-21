@@ -20,6 +20,11 @@ properties:
           # Get Username of logged in user
           $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
           $username = $env:USERNAME
+          # Enable WSL
+          dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart 
+          dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+          Start-Process msiexec.exe -ArgumentList '/i', 'C:\temp\wsl_update_x64.msi', '/quiet', '/norestart' -Wait
+          wsl --set-default-version 2
           # Add to docker-users group
           $username = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
           Add-LocalGroupMember -Group "docker-users" -Member $username

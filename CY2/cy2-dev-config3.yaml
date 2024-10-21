@@ -35,12 +35,13 @@ tasks:
     parameters:
       command: |
         New-Item -Path "C:\temp" -ItemType Directory -Force
-        Invoke-WebRequest -Uri "https://github.com/microsoft/WSL/releases/download/2.3.24/wsl.2.3.24.0.arm64.msi" -OutFile "C:\temp\wsl.2.3.24.0.arm64.msi"
+        #Invoke-WebRequest -Uri "https://github.com/microsoft/WSL/releases/download/2.3.24/wsl.2.3.24.0.arm64.msi" -OutFile "C:\temp\wsl.2.3.24.0.arm64.msi"
         Invoke-WebRequest -Uri "https://desktop.docker.com/win/stable/Docker%20Desktop%20Installer.exe" -OutFile "C:\temp\DockerDesktopInstaller.exe"
-
-  - name: install-msi
-    parameters:
-      filePath: 'C:\temp\wsl.2.3.24.0.arm64.msi'
+        Invoke-WebRequest -Uri "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi" -OutFile "C:\temp\wsl_update_x64.msi"
+        
+  #- name: install-msi
+  #  parameters:
+  #    filePath: 'C:\temp\wsl.2.3.24.0.arm64.msi'
 
   - name: powershell
     parameters:
