@@ -43,10 +43,10 @@ tasks:
   #  parameters:
   #    filePath: 'C:\temp\wsl.2.3.24.0.arm64.msi'
 
-  - name: powershell
-    parameters:
-      command: |
-        Start-Process "C:\temp\DockerDesktopInstaller.exe" -ArgumentList "--quiet", "--accept-license", "--backend=wsl-2", "--no-windows-containers" -Wait
+  #- name: powershell
+  #  parameters:
+  #    command: |
+  #      Start-Process "C:\temp\DockerDesktopInstaller.exe" -ArgumentList "--quiet", "--accept-license", "--backend=wsl-2", "--no-windows-containers" -Wait
 
   - name: git-clone
     description: 'Clone this repository into C:\src'
