@@ -28,15 +28,8 @@ properties:
           wsl --set-default-version 2
           wsl --update
 
-          # Path to the Docker Desktop settings file
-          $dockerSettingsPath = "$env:APPDATA\Docker\settings.json"
-          # Read the settings file content
-          $settings = Get-Content -Path $dockerSettingsPath -Raw | ConvertFrom-Json
-          # Set the configuration to skip the first run setup
-          $settings.SkipStartupTips = $true
-          $settings.CliOnboardingEnabled = $false
-          # Write the changes back to the settings file
-          $settings | ConvertTo-Json -Compress | Set-Content -Path $dockerSettingsPath 
+          # Copies docker admin settings config file over
+          Copy-Item -Path "C:\src\devboxcentercatalog\cy2\admin-settings.json" -Destination "C:\ProgramData\DockerDesktop\" -Force
           
           # Add to docker-users group
           $username = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
