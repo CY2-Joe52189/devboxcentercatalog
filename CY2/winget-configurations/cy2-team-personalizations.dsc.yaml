@@ -26,6 +26,7 @@ properties:
           dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
           Start-Process msiexec.exe -ArgumentList '/i', 'C:\temp\wsl_update_x64.msi', '/quiet', '/norestart' -Wait
           wsl --set-default-version 2
+          wsl --update
           
           # Add to docker-users group
           $username = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
