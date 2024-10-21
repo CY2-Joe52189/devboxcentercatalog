@@ -27,6 +27,16 @@ properties:
           Start-Process msiexec.exe -ArgumentList '/i', 'C:\temp\wsl_update_x64.msi', '/quiet', '/norestart' -Wait
           wsl --set-default-version 2
           wsl --update
+
+          # Path to the Docker Desktop settings file
+          $dockerSettingsPath = "$env:APPDATA\Docker\settings.json"
+          # Read the settings file content
+          $settings = Get-Content -Path $dockerSettingsPath -Raw | ConvertFrom-Json
+          # Set the configuration to skip the first run setup
+          $settings.SkipStartupTips = $true
+          $settings.CliOnboardingEnabled = $false
+          # Write the changes back to the settings file
+          $settings | ConvertTo-Json -Compress | Set-Content -Path $dockerSettingsPath 
           
           # Add to docker-users group
           $username = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
