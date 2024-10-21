@@ -17,11 +17,18 @@ properties:
         description: Runs cleanup items
       settings:
         SetScript: |
+          # Get Username of logged in user
           $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
           $username = $env:USERNAME
-          Remove-LocalGroupMember -Group "Administrators" -Member $username
+          # Add to docker-users group
+          $username = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
+          Add-LocalGroupMember -Group "docker-users" -Member $username
+          # Remove temp files
           Remove-Item -Path "C:\src\devcenter-catalog\" -Recurse -Force
           Remove-Item -Path "C:\temp\" -Recurse -Force
+          # Remove admin permissions and clean up
+          Remove-LocalGroupMember -Group "Administrators" -Member $username
+          shutdown /r /f
         GetScript: return $false
         TestScript: return $false
 
