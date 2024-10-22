@@ -27,9 +27,6 @@ properties:
           Start-Process msiexec.exe -ArgumentList '/i', 'C:\temp\wsl_update_x64.msi', '/quiet', '/norestart' -Wait
           wsl --set-default-version 2
           wsl --update
-
-          # Copies docker admin settings config file over
-          Copy-Item -Path "C:\src\devboxcentercatalog\cy2\admin-settings.json" -Destination "C:\ProgramData\DockerDesktop\" -Force
           
           # Add to docker-users group
           $username = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
