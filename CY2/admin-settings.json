@@ -1,5 +1,5 @@
 {
-    "configurationFileVersion": 1,
+    "configurationFileVersion": 2,
     "exposeDockerAPIOnTCP2375": {
       "locked": true,
       "value": false
