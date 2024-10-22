@@ -29,6 +29,10 @@ tasks:
     parameters:
       package: Microsoft.VisualStudioCode
 
+  - name: winget
+    parameters:
+      package: GnuWin32.Make
+
   - name: install-docker
   
   - name: powershell
