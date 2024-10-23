@@ -24,7 +24,6 @@ properties:
           # Enable WSL
           dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart 
           dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-          Start-Process msiexec.exe -ArgumentList '/i', 'C:\temp\wsl_update_x64.msi', '/quiet', '/norestart' -Wait
           wsl --set-default-version 2
           wsl --update
           
@@ -34,7 +33,6 @@ properties:
           
           # Remove temp files
           Remove-Item -Path "C:\src\devboxcentercatalog\" -Recurse -Force
-          Remove-Item -Path "C:\temp\" -Recurse -Force
 
           # Remove admin permissions and force restart machine
           Remove-LocalGroupMember -Group "Administrators" -Member $username

@@ -33,14 +33,12 @@ tasks:
     parameters:
       package: GnuWin32.Make
 
+  - name: winget
+    parameters:
+      package: Google.Chrome
+
   - name: install-docker
   
-  - name: powershell
-    parameters:
-      command: |
-        New-Item -Path "C:\temp" -ItemType Directory -Force
-        Invoke-WebRequest -Uri "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi" -OutFile "C:\temp\wsl_update_x64.msi"
-
   - name: git-clone
     description: 'Clone this repository into C:\src'
     parameters:
