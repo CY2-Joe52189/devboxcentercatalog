@@ -91,7 +91,7 @@
     },
     "blockDockerLoad": {
       "locked": false,
-      "value": true
+      "value": false
     },
     "filesharingAllowedDirectories": [
       {
@@ -105,10 +105,10 @@
     ],
     "displayedOnboarding": {
       "locked": true,
-      "value": true
+      "value": false
     },
     "desktopTerminalEnabled": {
       "locked": false,
-      "value": false
+      "value": true
     }
   }
