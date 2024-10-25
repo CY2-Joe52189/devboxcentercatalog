@@ -69,7 +69,7 @@
       "value": false
     },
     "analyticsEnabled": {
-      "locked": false,
+      "locked": true,
       "value": false
     },
     "extensionsEnabled": {
@@ -82,15 +82,15 @@
       "useBackgroundIndexing": true
     },
     "allowExperimentalFeatures": {
-      "locked": false,
+      "locked": true,
       "value": true
     },
     "allowBetaFeatures": {
-      "locked": false,
+      "locked": true,
       "value": true
     },
     "blockDockerLoad": {
-      "locked": false,
+      "locked": true,
       "value": false
     },
     "filesharingAllowedDirectories": [
@@ -108,7 +108,7 @@
       "value": false
     },
     "desktopTerminalEnabled": {
-      "locked": false,
+      "locked": true,
       "value": true
     }
   }
