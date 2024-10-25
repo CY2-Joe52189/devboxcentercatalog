@@ -70,7 +70,7 @@
     },
     "analyticsEnabled": {
       "locked": false,
-      "value": true
+      "value": false
     },
     "extensionsEnabled": {
       "locked": true,
@@ -83,11 +83,11 @@
     },
     "allowExperimentalFeatures": {
       "locked": false,
-      "value": false
+      "value": true
     },
     "allowBetaFeatures": {
       "locked": false,
-      "value": false
+      "value": true
     },
     "blockDockerLoad": {
       "locked": false,
