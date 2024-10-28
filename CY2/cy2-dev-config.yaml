@@ -37,7 +37,10 @@ tasks:
     parameters:
       package: Google.Chrome
 
-  - name: install-docker
+  - name: choco
+    description: install Docker Desktop
+    parameters:
+      package: docker-desktop
 
   - name: choco
     description: install PHP
