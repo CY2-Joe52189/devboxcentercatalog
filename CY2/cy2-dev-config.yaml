@@ -38,6 +38,11 @@ tasks:
       package: Google.Chrome
 
   - name: install-docker
+
+  - name: choco
+    description: install PHP
+    parameters:
+      package: php
   
   - name: git-clone
     description: 'Clone this repository into C:\src'

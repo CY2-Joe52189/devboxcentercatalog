@@ -83,11 +83,11 @@
     },
     "allowExperimentalFeatures": {
       "locked": true,
-      "value": true
+      "value": false
     },
     "allowBetaFeatures": {
       "locked": true,
-      "value": true
+      "value": false
     },
     "blockDockerLoad": {
       "locked": true,
