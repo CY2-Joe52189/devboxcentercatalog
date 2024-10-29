@@ -24,7 +24,7 @@
     },
     "enhancedContainerIsolation": {
       "locked": true,
-      "value": true,
+      "value": false,
       "dockerSocketMount": {
         "imageList": {
           "images": [
@@ -78,8 +78,8 @@
     },
     "scout": {
       "locked": false,
-      "sbomIndexing": true,
-      "useBackgroundIndexing": true
+      "sbomIndexing": false,
+      "useBackgroundIndexing": false
     },
     "allowExperimentalFeatures": {
       "locked": true,
@@ -109,6 +109,6 @@
     },
     "desktopTerminalEnabled": {
       "locked": true,
-      "value": true
+      "value": false
     }
   }
