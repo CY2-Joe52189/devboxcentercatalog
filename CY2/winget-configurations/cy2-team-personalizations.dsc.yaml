@@ -21,9 +21,6 @@ properties:
           $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
           $username = $env:USERNAME
           
-          # Enable WSL
-          wsl --set-default-version 2
-          
           # Add to docker-users group
           $username = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
           Add-LocalGroupMember -Group "docker-users" -Member $username
