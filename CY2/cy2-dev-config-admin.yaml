@@ -46,11 +46,6 @@ tasks:
     description: install PHP
     parameters:
       package: php
-
-  - name: choco
-    description: install WSL2
-    parameters:
-      package: wsl2
   
   - name: git-clone
     description: 'Clone this repository into C:\src'
@@ -67,5 +62,5 @@ tasks:
   - name: winget
     description: Apply a winget configuration file, downloading from a public URL to the specified path
     parameters:
-      configurationFile: 'C:\src\devboxcentercatalog\CY2\winget-configurations\cy2-team-personalizations.dsc.yaml'
+      configurationFile: 'C:\src\devboxcentercatalog\CY2\winget-configurations\cy2-team-personalizations-admin.dsc.yaml'
       runAsUser: true  
