@@ -7,10 +7,6 @@ tasks:
   
   - name: winget
     parameters:
-      package: OpenJS.NodeJS
-  
-  - name: winget
-    parameters:
       package: Python.Python.3.11
   
   - name: winget
@@ -38,6 +34,11 @@ tasks:
       package: Google.Chrome
 
   - name: choco
+    description: install NodeJS
+    parameters:
+      package: nodejs --version=20.18.0
+
+  - name: choco
     description: install Docker Desktop
     parameters:
       package: docker-desktop
@@ -45,7 +46,7 @@ tasks:
   - name: choco
     description: install PHP
     parameters:
-      package: php
+      package: php --version=8.3.11
 
   - name: choco
     description: install WSL2
@@ -57,13 +58,7 @@ tasks:
     parameters:
       repositoryUrl: https://github.com/CY2-Joe52189/devboxcentercatalog.git
       directory: C:\src
-  
-  - name: powershell
-    parameters:
-      command: |
-        # Copies docker admin settings config file over
-        Copy-Item -Path "C:\src\devboxcentercatalog\cy2\admin-settings.json" -Destination "C:\ProgramData\DockerDesktop\" -Force
-  
+
   - name: winget
     description: Apply a winget configuration file, downloading from a public URL to the specified path
     parameters:
