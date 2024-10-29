@@ -41,7 +41,7 @@
     "linuxVM": {
       "wslEngineEnabled": {
         "locked": false,
-        "value": true
+        "value": false
       },
       "dockerDaemonOptions": {
         "locked": false,
@@ -96,7 +96,7 @@
     "filesharingAllowedDirectories": [
       {
         "path": "$HOME",
-        "sharedByDefault": true
+        "sharedByDefault": false
       },
       {
         "path":"$TMP",
