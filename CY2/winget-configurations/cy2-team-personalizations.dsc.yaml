@@ -22,7 +22,7 @@ properties:
           Invoke-WebRequest -Uri https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.15.3-windows-x86_64.zip -OutFile elastic-agent-8.15.3-windows-x86_64.zip
           Expand-Archive .\elastic-agent-8.15.3-windows-x86_64.zip -DestinationPath .
           cd elastic-agent-8.15.3-windows-x86_64
-          .\elastic-agent.exe install --url=https://b1d6944f978c4e718656dfead30f3395.fleet.eu-west-2.aws.cloud.es.io:443 --enrollment-token=Um1XVDJKSUJXTVE4MHpTdW5RNUk6aGRfbVptcU9TRjZmSEFHMjUzMS0wZw==
+          .\elastic-agent.exe install -f --url=https://b1d6944f978c4e718656dfead30f3395.fleet.eu-west-2.aws.cloud.es.io:443 --enrollment-token=Um1XVDJKSUJXTVE4MHpTdW5RNUk6aGRfbVptcU9TRjZmSEFHMjUzMS0wZw==
         GetScript: return $false
         TestScript: return $false
 
