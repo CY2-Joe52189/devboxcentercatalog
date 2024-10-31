@@ -27,12 +27,13 @@ tasks:
 
   - name: winget
     parameters:
-      package: GnuWin32.Make
-
-  - name: winget
-    parameters:
       package: Google.Chrome
-  
+
+  - name: choco
+    description: install Make
+    parameters:
+      package: make
+
   - name: choco
     description: install Node JS 20.18.0
     parameters:

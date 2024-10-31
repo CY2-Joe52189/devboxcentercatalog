@@ -9,7 +9,7 @@ properties:
   #########################################
   ### Powershell Config  
   ########################################
-  ### Run powershell cleanup script
+  ### Run install Elastic agent script
   ### -------------------------------------
     - resource: PSDscResources/Script
       id: installelasticagent
@@ -25,7 +25,10 @@ properties:
           .\elastic-agent.exe install -f --url=https://b1d6944f978c4e718656dfead30f3395.fleet.eu-west-2.aws.cloud.es.io:443 --enrollment-token=Um1XVDJKSUJXTVE4MHpTdW5RNUk6aGRfbVptcU9TRjZmSEFHMjUzMS0wZw==
         GetScript: return $false
         TestScript: return $false
-
+  
+  ########################################
+  ### Run powershell cleanup script
+  ### -------------------------------------
     - resource: PSDscResources/Script
       id: runcleanup
       directives:
