@@ -32,7 +32,7 @@ properties:
     - resource: PSDscResources/Script
       id: vscodeextensions
       directives:
-        description: Install Basic VS Code Extensions
+        description: Install VS Code Extensions
       settings:
         SetScript: |
           $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
@@ -45,6 +45,7 @@ properties:
           code --install-extension DEVSENSE.phptools-vscode
           code --install-extension ms-python.python
           code --install-extension ms-python.debugpy
+          code --install-extension ms-vscode-remote.remote-wsl
         GetScript: return $false
         TestScript: return $false
 

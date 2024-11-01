@@ -7,10 +7,6 @@ tasks:
   
   - name: winget
     parameters:
-      package: Python.Python.3.11
-  
-  - name: winget
-    parameters:
       package: GitHub.GitHubDesktop
   
   - name: winget
@@ -20,25 +16,20 @@ tasks:
   - name: winget
     parameters:
       package: Notepad++.Notepad++
-  
-  - name: winget
-    parameters:
-      package: Microsoft.VisualStudioCode
 
   - name: winget
     parameters:
       package: Google.Chrome
 
   - name: choco
+    description: install git
+    parameters:
+      package: git
+
+  - name: choco
     description: install Make
     parameters:
       package: make
-
-  - name: choco
-    description: install Node JS 20.18.0
-    parameters:
-      package: nodejs
-      version: 20.17.0
 
   - name: choco
     description: install Docker Desktop
@@ -50,11 +41,6 @@ tasks:
     parameters:
       package: php 
       version: 8.3.13
-
-  - name: choco
-    description: install WSL2
-    parameters:
-      package: wsl2
 
   - name: winget
     parameters:
