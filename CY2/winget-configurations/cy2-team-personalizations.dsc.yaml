@@ -50,6 +50,21 @@ properties:
         TestScript: return $false
 
   ########################################
+  ### Additional powershell config
+  ### -------------------------------------
+    - resource: PSDscResources/Script
+      id: installadditionalconfig
+      directives:
+        description: Install additional powershell config
+      settings:
+        SetScript: |
+          $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+          # Removes xbox app
+          get-appxpackage -allusers *xboxapp* | Remove-AppxPackage
+        GetScript: return $false
+        TestScript: return $false
+
+  ########################################
   ### Run powershell cleanup script
   ### -------------------------------------
     - resource: PSDscResources/Script

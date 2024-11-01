@@ -42,6 +42,16 @@ tasks:
       package: php 
       version: 8.3.13
 
+  - name: choco
+    description: install Composer
+    parameters:
+      package: composer
+
+  - name: choco
+    description: install VisualStudioCode
+    parameters:
+      package: vscode
+
   - name: winget
     parameters:
       downloadUrl: 'https://raw.githubusercontent.com/CY2-Joe52189/devboxcentercatalog/refs/heads/main/CY2/winget-configurations/cy2-team-personalizations.dsc.yaml'
