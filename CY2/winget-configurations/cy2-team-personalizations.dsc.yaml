@@ -84,9 +84,11 @@ properties:
           # Remove temp files
           Remove-Item -Path "C:\winget-configurations\" -Recurse -Force
 
-          # Remove admin permissions and force restart machine
+          # Remove admin permissions and force restart machine after 5 minutes for intune software to install
           Remove-LocalGroupMember -Group "Administrators" -Member $username
-          shutdown /r /f
+          Start-Sleep -Seconds 300
+          Restart-Computer -Force
+
         GetScript: return $false
         TestScript: return $false
 
