@@ -60,7 +60,7 @@ properties:
         SetScript: |
           $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
           # Removes xbox app
-          get-appxpackage -allusers *xboxapp* | Remove-AppxPackage
+          # get-appxpackage -allusers *xboxapp* | Remove-AppxPackage
         GetScript: return $false
         TestScript: return $false
 
