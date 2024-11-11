@@ -5,10 +5,6 @@ properties:
   ########################################
   resources:
   ########################################
-  ### Install Tools
-  #########################################
-  ### Powershell Config  
-  ########################################
   ### Run install Elastic agent script
   ### -------------------------------------
     - resource: PSDscResources/Script

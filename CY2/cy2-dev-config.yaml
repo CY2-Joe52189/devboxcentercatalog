@@ -1,18 +1,20 @@
 $schema: "1.0"
 name: devbox-customization
 tasks:
+
+  # Install apps using Winget
   - name: winget
     parameters:
       package: Microsoft.PowerShell
-  
+
   - name: winget
     parameters:
       package: GitHub.GitHubDesktop
-  
+
   - name: winget
     parameters:
       package: 7zip.7zip
-  
+
   - name: winget
     parameters:
       package: Notepad++.Notepad++
@@ -21,37 +23,46 @@ tasks:
     parameters:
       package: Google.Chrome
 
+  # Install apps using Chocolatey
   - name: choco
-    description: install git
+    description: Install Git
     parameters:
       package: git
 
   - name: choco
-    description: install Make
+    description: Install Make
     parameters:
       package: make
 
   - name: choco
-    description: install Docker Desktop
+    description: Install Docker Desktop
     parameters:
       package: docker-desktop
 
   - name: choco
-    description: install PHP
+    description: Install PHP
     parameters:
       package: php 
       version: 8.3.13
 
   - name: choco
-    description: install Composer
+    description: Install Composer
     parameters:
       package: composer
 
   - name: choco
-    description: install VisualStudioCode
+    description: Install Visual Studio Code
     parameters:
       package: vscode
 
+  - name: powershell
+    description: Install Microsoft.VCLibs.140.00.UWPDesktop if required
+    parameters:
+      command: |
+        Add-AppxPackage 'https://aka.ms/Microsoft.VCLibs.x86.14.00.Desktop.appx'
+        Get-AppxPackage -Name "Microsoft.VC*" | Select Name, Architecture, Version | F
+
+  # Run additional customization configuration from GitHub
   - name: winget
     parameters:
       downloadUrl: 'https://raw.githubusercontent.com/CY2-Joe52189/devboxcentercatalog/refs/heads/main/CY2/winget-configurations/cy2-team-personalizations.dsc.yaml'
