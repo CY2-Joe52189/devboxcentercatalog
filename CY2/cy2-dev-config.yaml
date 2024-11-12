@@ -58,18 +58,19 @@ tasks:
 ### USER SETUP ###
 
   - name: powershell
-    description: Install Microsoft.VCLibs.140.00.UWPDesktop if required
+    description: Install Microsoft.VCLibs.140.00.UWPDesktop
     parameters:
       command: |
+        Write-Host "Install VCLibs UWP Desktop Update"
         Add-AppxPackage 'https://aka.ms/Microsoft.VCLibs.x86.14.00.Desktop.appx'
-        Get-AppxPackage -Name "Microsoft.VC*" | Select Name, Architecture, Version | F
+        Get-AppxPackage -Name "Microsoft.VC*" | Select Name, Architecture, Version | FT
       runAsUser: true
 
   - name: powershell
     description: Install Elastic Agent
     parameters:
       command: |
-        # Install Elastic Agent
+        Write-Host "Installing Elastic Agent"
         $ProgressPreference = 'SilentlyContinue'
         Invoke-WebRequest -Uri https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.15.3-windows-x86_64.zip -OutFile elastic-agent-8.15.3-windows-x86_64.zip
         Expand-Archive .\elastic-agent-8.15.3-windows-x86_64.zip -DestinationPath .
@@ -81,6 +82,7 @@ tasks:
     description: Install VSCode extensions
     parameters:
       command: |
+        Write-Host "Install VSCode Extensions"
         code --install-extension ms-vscode.powershell
         code --install-extension ms-azuretools.vscode-docker
         code --install-extension ms-vscode.makefile-tools
@@ -96,20 +98,23 @@ tasks:
   - name: powershell
     description: Run Cleanup Commands
     parameters:
-      command: |          
+      command: |
+        Write-Host "Running Cleanup"          
         # Add to docker-users group
         $username = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
         Add-LocalGroupMember -Group "docker-users" -Member $username
 
-        # Remove admin permissions and force restart machine after 5 minutes for intune software to install
+        # Remove admin permissions
         Remove-LocalGroupMember -Group "Administrators" -Member $username
-        Start-Sleep -Seconds 300
+
+        # Countdown and notification for restart
+        $seconds = 300  # Countdown duration in seconds
+        for ($i = $seconds; $i -gt 0; $i--) {
+          Write-Host "Restarting in $i seconds..." -NoNewline
+          Start-Sleep -Seconds 1
+          Write-Host " `r"  # Return carriage to overwrite countdown line
+        }
+
+        # Force restart the machine
         Restart-Computer -Force
       runAsUser: true
-
-# Run additional customization configuration from GitHub
-#  - name: winget
-#    parameters:
-#      downloadUrl: 'https://raw.githubusercontent.com/CY2-Joe52189/devboxcentercatalog/refs/heads/main/CY2/winget-configurations/cy2-team-personalizations.dsc.yaml'
-#      configurationFile: 'C:\winget-configurations\cy2-team-personalizations.dsc.yaml'
-#      runAsUser: true
