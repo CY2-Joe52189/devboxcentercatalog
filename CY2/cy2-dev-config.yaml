@@ -94,27 +94,12 @@ tasks:
       runAsUser: true
 
   - name: powershell
-    description: Additional Powershell Config
-    parameters:
-      command: |
-        # Removes xbox app
-        get-appxpackage -allusers *xboxapp* | Remove-AppxPackage
-      runAsUser: true
-
-  - name: powershell
     description: Run Cleanup Commands
     parameters:
-      command: |
-        # Get Username of logged in user
-        $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-        $username = $env:USERNAME
-          
+      command: |          
         # Add to docker-users group
         $username = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
         Add-LocalGroupMember -Group "docker-users" -Member $username
-          
-        # Remove temp files
-        Remove-Item -Path "C:\winget-configurations\" -Recurse -Force
 
         # Remove admin permissions and force restart machine after 5 minutes for intune software to install
         Remove-LocalGroupMember -Group "Administrators" -Member $username
