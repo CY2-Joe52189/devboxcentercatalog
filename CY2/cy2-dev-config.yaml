@@ -108,7 +108,7 @@ tasks:
         Remove-LocalGroupMember -Group "Administrators" -Member $username
 
         # Countdown and notification for restart
-        $seconds = 300  # Countdown duration in seconds
+        $seconds = 120  # Countdown duration in seconds
         for ($i = $seconds; $i -gt 0; $i--) {
           Write-Host "Restarting in $i seconds..." -NoNewline
           Start-Sleep -Seconds 1
